@@ -1,0 +1,112 @@
+
+
+; Assessed exercise: Sigma 16 Assembly Language Language Programming
+; 
+; Hugh Winchester 2494047W
+;
+; Assessed program written in Java: 
+;
+; public class SumPos {
+;
+;     public static void main(String[] args) {
+;         addPos();
+;     }
+;
+;     public static void addPos() {
+;
+;         int[] array = new int[]{3, -6, 27, 101, 50, 0, -20, -21, 19, 6, 4, -10};
+;         int posssum = 0;
+;         int negcount = 0;
+;         int oddcount = 0;
+;
+;         for (int i = 0; i < array.length; i++) {
+;
+;             if (array[i] % 2 != 0 && array[i] > 0) {
+;                 oddcount++;
+;             }
+;
+;             if (array[i] >= 0) {
+;                 posssum += array[i];
+;             } else {
+;                 negcount++;
+;             }
+;         }
+;         System.out.println(posssum + " " + negcount + " " + oddcount);
+;     }			// prints :  210          4          4
+;
+; }
+
+		 LOAD	R1,posssum[R0]
+		 LOAD	R2,negcount[R0]
+		 LOAD	R3,oddcount[R0]
+		 LOAD	R4,arrayLength[R0]
+		 LOAD	R5,array[R0]
+		 LEA	R6,0[R0] ; Serves as iterator
+		 LEA 	R7,1[R0] ; As 1 is used frequently, this is used as a constant.
+		 LEA	R9,0[R0] ; As 0 is used frequently, this is used as a constant.
+		 LEA	R13,2[R0]; As 2 is used frequently, this is used as a constant.
+		 
+
+FORLOOP	 	LOAD 	R8,array[R6]   ;loads the next value in the array. The element in the array loaded into R8 is controlled by the interator in R6.
+		 
+
+; if (array[i] % 2 != 0 && array[i] > 0)
+
+
+
+		CMPLT		R10,R8,R9		; compares the current element to see whether it is less than 0. 
+		JUMPT		R10,ZERO[R0]		;jumps to zero if true (1). 
+		DIV		R11,R8,R13		;divides the current value in the array by 2 (value in R13)
+		CMPEQ		R12,R15,R7 		;the remainder of the division is stored in R15 (1). This is then compared to being equal to 1. 
+		JUMPF		R12,ZERO[R0]	;jumps to ZERO if the statement is true (1). If it's not the code continues as normal. 
+		ADD		R3,R3,R7		;increments R3 by 1 (R7).
+
+		
+
+		 
+		 
+; if statement (array[i] > 0)
+
+		
+ZERO		
+		CMPLT	R10,R8,R9 		;compares whether the number in R8 (current array element) is less than 0 (R9). Stores the result in R10. 
+		JUMPF	R10,POS[R0];jumps to POS if above statement is false (R10). 
+		ADD	R2,R2,R10 		;Otherwise, increments negcount by 1 if negative
+		JUMP	LOOPCHECK[R0]  ; returns to LOOPCHECK to assess whether the loop will continue. 
+
+		
+POS		ADD		R1,R1,R8       ; adds the sum of the positive numbers to R1
+
+		
+		
+		
+; for (int i = 0; i < array.length; i++) 
+		
+LOOPCHECK		CMPEQ	R8,R6,R4 		;compares arrayLength (R4) with the current iterator value (R6)
+			ADD	R6,R6,R7 		;increases the iterator by 1. Although this increases beyond 11 on the find iteration, it is of no consequence as the loop is complete. 
+			JUMPF	R8,FORLOOP[R0]  ;if arrayLength and iterator are the same, the program breaks out of the loop. 
+			STORE 	R1,posssum[R0]  ;stores value in R1 to posssum
+			STORE	R2,negcount[R0] ;stores value in R2 to negcout
+			STORE	R3,oddcount[R0] ;stores value in R3 to oddcount
+STOP			TRAP	R0,R0,R0	
+			
+			
+
+; DATA Statements
+  
+posssum		DATA	0      ;creates the label possum and initialises to 0. 
+negcount	DATA	0      ;creates the label negcount and initialises to 0. 
+oddcount	DATA	0      ;creates the label oddcount and initialises to 0.
+arrayLength	DATA	11	;creates the label oddcount and initialises to 11.
+array		DATA	3	;creates the label array and sets the value of array[0] to 3
+			DATA	-6	;Subsequent statements fill in the indexes of the array
+			DATA	27
+			DATA	101
+			DATA	50
+			DATA	0
+			DATA	-20
+			DATA	-21
+			DATA	19
+			DATA	6
+			DATA	4
+			DATA	-10
