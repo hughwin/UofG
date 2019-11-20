@@ -79,7 +79,7 @@ public class UserInterfaceFrame extends JFrame implements ActionListener {
         spin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                gamelogic.spin();
+                cards.setText(gamelogic.spin());
                 balanceLabel.setText("Balance is " + gamelogic.getBalance());
                 card1Label.setText(gamelogic.getDrawnCardAtX(0));
                 card2Label.setText(gamelogic.getDrawnCardAtX(1));
@@ -89,7 +89,7 @@ public class UserInterfaceFrame extends JFrame implements ActionListener {
         });
         
                 JButton reset = new JButton("New game");
-        reset.setEnabled(true);
+        reset.setEnabled(false);
         reset.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 gamelogic.setBalance(100);

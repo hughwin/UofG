@@ -1,8 +1,7 @@
 /*
 Hugh Winchester
 2494047W
-*/
-
+ */
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -30,9 +29,6 @@ public class GameLogic {
     }
 
     public String getDrawnCardAtX(int x) {
-        if (drawnCards[x].equals("0") || drawnCards[x].equals("1") || drawnCards[x].equals("2")) {
-            return "Joker";
-        }
         return drawnCards[x];
     }
 
@@ -40,39 +36,40 @@ public class GameLogic {
         balance = newBalance;
     }
 
-    public void spin() {
+    public String spin() {
 
         Random random = new Random();
+        int count = 0;
         for (int i = 0; i < 3; i++) {
 
             drawnCards[i] = cards[random.nextInt(cards.length)];
             System.out.println(drawnCards[i]);
+
             if (drawnCards[i].equals("Joker")) {
                 balance -= 25;
-                drawnCards[i] = i + ""; //
+                count++;
             }
+            }
+            if (count > 1) {
+                return count + " jokers: you lose " + (25 * count) + " points";
+            }
+            if (count != 0) {
+                return count + " joker: you lose " + (25 * count) + " points";
+            }
+        
 
-        }
         if (drawnCards[0].equals(drawnCards[1]) && drawnCards[1].equals(drawnCards[2])) {
             balance += 50;
+            return "Three of a kind - you win 50 points";
+
         } else if (drawnCards[0].equals(drawnCards[1]) || drawnCards[0].equals(drawnCards[2])
                 || drawnCards[1].equals(drawnCards[2])) {
 
             balance += 20;
+            return "Two of a kind - you win 20 points";
         }
-        if (balance < 0 ){
-        }
-        System.out.println(balance);
+        return null;
     }
-    
-    public boolean hasLost(){
-        if (balance < 0){
-            return true;
-        }
-        return false;
-    }
-    
-
-    
-
 }
+
+
