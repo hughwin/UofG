@@ -4,6 +4,8 @@ Hugh Winchester
 */
 
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.util.Random;
 
 public class GameLogic {
@@ -11,11 +13,12 @@ public class GameLogic {
     private String[] cards;
     private String[] drawnCards;
     private int balance;
+    private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
     public GameLogic() {
         cards = new String[]{"Ace", "King", "Queen", "Jack", "Joker"};
         drawnCards = new String[3];
-        this.balance = 100;
+        this.balance = 20;
     }
 
     public String[] getCards() {
@@ -57,24 +60,19 @@ public class GameLogic {
 
             balance += 20;
         }
+        if (balance < 0 ){
+        }
         System.out.println(balance);
     }
-
-    public boolean hasWon() {
-
-        if (balance > 150) {
+    
+    public boolean hasLost(){
+        if (balance < 0){
             return true;
         }
         return false;
-
     }
+    
 
-    public boolean hasLost() {
+    
 
-        if (balance < 0) {
-            return true;
-        }
-        return false;
-
-    }
 }

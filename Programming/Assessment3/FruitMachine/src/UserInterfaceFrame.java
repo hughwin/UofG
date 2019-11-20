@@ -3,7 +3,6 @@ Hugh Winchester
 2494047W
  */
 
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -74,14 +73,7 @@ public class UserInterfaceFrame extends JFrame implements ActionListener {
         lowerLeftFrame.add(card2);
         lowerLeftFrame.add(card3);
 
-        JButton reset = new JButton("New game");
-        reset.setEnabled(false);
-        reset.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                gamelogic.setBalance(100);
 
-            }
-        });
 
         JButton spin = new JButton("Spin");
         spin.addActionListener(new ActionListener() {
@@ -92,23 +84,40 @@ public class UserInterfaceFrame extends JFrame implements ActionListener {
                 card1Label.setText(gamelogic.getDrawnCardAtX(0));
                 card2Label.setText(gamelogic.getDrawnCardAtX(1));
                 card3Label.setText(gamelogic.getDrawnCardAtX(2));
-                if (gamelogic.hasWon()) {
-                    winLose.setText("You win!");
-                    spin.setEnabled(false);
-                    reset.setEnabled(true);
-                }
-                if (gamelogic.hasLost()) {
-                    winLose.setText("You lose!");
-                    spin.setEnabled(false);
-                    reset.setEnabled(true);
-                }
 
             }
         });
-       
         
+                JButton reset = new JButton("New game");
+        reset.setEnabled(true);
+        reset.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                gamelogic.setBalance(100);
+                reset.setEnabled(false);
+                spin.setEnabled(true);
+                winLose.setText("");
+                balanceLabel.setText("Balance is: " + gamelogic.getBalance());
 
+            }
+        });
 
+        balanceLabel.addPropertyChangeListener(new PropertyChangeListener() {
+            @Override
+            public void propertyChange(PropertyChangeEvent event) {
+                if (gamelogic.getBalance() < 0) {
+                    winLose.setText("You lose!");
+                    reset.setEnabled(true);
+                    spin.setEnabled(false);
+                }
+                if (gamelogic.getBalance() > 150) {
+                    winLose.setText("You lose!");
+                    reset.setEnabled(true);
+                    spin.setEnabled(false);
+                }
+            }
+        });
+        
+        
 
         lowerRightFrame.add(spin);
         lowerRightFrame.add(reset);
