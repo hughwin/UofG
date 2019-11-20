@@ -110,7 +110,7 @@ public class UserInterfaceFrame extends JFrame implements ActionListener {
                     spin.setEnabled(false);
                 }
                 if (gamelogic.getBalance() > 150) {
-                    winLose.setText("You lose!");
+                    winLose.setText("You win!");
                     reset.setEnabled(true);
                     spin.setEnabled(false);
                 }

@@ -18,7 +18,7 @@ public class GameLogic {
     public GameLogic() {
         cards = new String[]{"Ace", "King", "Queen", "Jack", "Joker"};
         drawnCards = new String[3];
-        this.balance = 20;
+        this.balance = 100;
     }
 
     public String[] getCards() {
