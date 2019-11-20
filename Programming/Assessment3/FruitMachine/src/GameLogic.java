@@ -1,3 +1,8 @@
+/*
+Hugh Winchester
+2494047W
+*/
+
 
 import java.util.Random;
 
