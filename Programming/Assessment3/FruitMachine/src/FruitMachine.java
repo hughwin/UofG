@@ -12,7 +12,7 @@
 public class FruitMachine {
 
     public static void main(String[] args) {
-         UserInterface userInterface = new UserInterface("Fruitmachine");
+         UserInterfaceFrame userInterface = new UserInterfaceFrame("Fruitmachine");
     }
     
     
