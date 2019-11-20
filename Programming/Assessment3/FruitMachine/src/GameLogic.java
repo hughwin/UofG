@@ -49,14 +49,13 @@ public class GameLogic {
                 balance -= 25;
                 count++;
             }
-            }
-            if (count > 1) {
-                return count + " jokers: you lose " + (25 * count) + " points";
-            }
-            if (count != 0) {
-                return count + " joker: you lose " + (25 * count) + " points";
-            }
-        
+        }
+        if (count > 1) {
+            return count + " jokers: you lose " + (25 * count) + " points";
+        }
+        if (count != 0) {
+            return count + " joker: you lose " + (25 * count) + " points";
+        }
 
         if (drawnCards[0].equals(drawnCards[1]) && drawnCards[1].equals(drawnCards[2])) {
             balance += 50;
@@ -71,5 +70,3 @@ public class GameLogic {
         return null;
     }
 }
-
-

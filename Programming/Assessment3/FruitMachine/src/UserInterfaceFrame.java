@@ -73,8 +73,6 @@ public class UserInterfaceFrame extends JFrame implements ActionListener {
         lowerLeftFrame.add(card2);
         lowerLeftFrame.add(card3);
 
-
-
         JButton spin = new JButton("Spin");
         spin.addActionListener(new ActionListener() {
             @Override
@@ -87,8 +85,8 @@ public class UserInterfaceFrame extends JFrame implements ActionListener {
 
             }
         });
-        
-                JButton reset = new JButton("New game");
+
+        JButton reset = new JButton("New game");
         reset.setEnabled(false);
         reset.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -116,8 +114,6 @@ public class UserInterfaceFrame extends JFrame implements ActionListener {
                 }
             }
         });
-        
-        
 
         lowerRightFrame.add(spin);
         lowerRightFrame.add(reset);
