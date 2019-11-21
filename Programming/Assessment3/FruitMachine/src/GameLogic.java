@@ -3,8 +3,7 @@ Hugh Winchester
 2494047W
  */
 
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeSupport;
+
 import java.util.Random;
 
 public class GameLogic {
@@ -12,7 +11,6 @@ public class GameLogic {
     private String[] cards;
     private String[] drawnCards;
     private int balance;
-    private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
     public GameLogic() {
         cards = new String[]{"Ace", "King", "Queen", "Jack", "Joker"};
