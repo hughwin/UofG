@@ -6,17 +6,23 @@ Hugh Winchester
 import java.util.Random;
 
 public class GameLogic {
+    
+        /*
+    The GameLogic class contains the code determining the game's functionality. 
+    The class is responsible for drawing cards when the user clicks spin, and
+    determining the change in balance. 
+    
+    I considered creating a separate class for cards, but this I believe 
+    would add unnecessary complexity to my code: the cards don’t need to be 
+    instantiated as they don’t have their own properties. 
+     */
 
     // instance variable declaration
     private String[] cards;
     private String[] drawnCards;
     private int balance;
 
-    /*
-    I considered creating a separate class for cards, but this I believe 
-    would add unnecessary complexity to my code: the cards don’t need to be 
-    instantiated as they don’t have their own properties. 
-     */
+
     
     public GameLogic() { // Constructor for GameLogic class
         cards = new String[]{"Ace", "King", "Queen", "Jack", "Joker"}; // Creates an 
