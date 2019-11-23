@@ -79,4 +79,19 @@ public class GameLogic {
         }
         return null; // If there are no jokers and no matching pairs / triples null is returned. 
     }
+    
+    public boolean hasWon(){
+        if (balance > 150){
+            return true;
+                }
+        return false;
+    }
+    
+    public boolean hasLost(){
+        if (balance < 0){
+            return true;
+        }
+        return false;
+    }
+    
 }

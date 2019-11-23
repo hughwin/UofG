@@ -3,6 +3,8 @@ Hugh Winchester
 2494047W
  */
 
+import java.awt.Color;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,8 +22,6 @@ public class UserInterfaceFrame extends JFrame implements ActionListener {
 
     private GameLogic gamelogic;
 
-    ;
-
 	public UserInterfaceFrame(String title) {
         super(title);
         setSize(600, 400);
@@ -36,13 +36,13 @@ public class UserInterfaceFrame extends JFrame implements ActionListener {
         JPanel labels = new JPanel();
         labels.setLayout(new BoxLayout(labels, BoxLayout.Y_AXIS));
 
-        DataLabel balanceLabel = new DataLabel("Balance is " + gamelogic.getBalance());
+        JLabel balanceLabel = new JLabel("Balance is " + gamelogic.getBalance());
         labels.add(balanceLabel);
 
-        DataLabel cards = new DataLabel("Welcome");
+        JLabel cards = new JLabel("Welcome");
         labels.add(cards);
 
-        DataLabel winLose = new DataLabel("");
+        JLabel winLose = new JLabel("");
         labels.add(winLose);
 
         labelsBorder.add(labels);
@@ -57,16 +57,17 @@ public class UserInterfaceFrame extends JFrame implements ActionListener {
         JPanel lowerLeftFrame = new JPanel();
         lowerLeftFrame.setLayout(new GridLayout(0, 3, 30, 0));
         lowerLeftFrame.setBorder(BorderFactory.createEmptyBorder(50, 50, 50, 50));
-        JPanel card1 = new CardPanel();
-        JLabel card1Label = new JLabel("", SwingConstants.CENTER);
+        
+        JPanel card1 = new JPanel();
+        JLabel card1Label = setCardLayout(card1); 
         card1.add(card1Label);
 
-        JPanel card2 = new CardPanel();
-        JLabel card2Label = new JLabel("", SwingConstants.CENTER);
+        JPanel card2 = new JPanel();
+        JLabel card2Label = setCardLayout(card2);
         card2.add(card2Label);
 
-        JPanel card3 = new CardPanel();
-        JLabel card3Label = new JLabel("", SwingConstants.CENTER);
+        JPanel card3 = new JPanel();
+        JLabel card3Label = setCardLayout(card3);
         card3.add(card3Label);
 
         lowerLeftFrame.add(card1);
@@ -102,7 +103,7 @@ public class UserInterfaceFrame extends JFrame implements ActionListener {
         balanceLabel.addPropertyChangeListener(new PropertyChangeListener() {
             @Override
             public void propertyChange(PropertyChangeEvent event) {
-                if (gamelogic.getBalance() < 0) {
+                if (gamelogic.hasLost()) {
                     winLose.setText("You lose!");
                     reset.setEnabled(true);
                     spin.setEnabled(false);
@@ -132,5 +133,13 @@ public class UserInterfaceFrame extends JFrame implements ActionListener {
         // TODO Auto-generated method stub
 
     }
+    
+    private JLabel setCardLayout(JPanel toBeSet){ // Helper method for the creation of cards as this is done repetitively
+        toBeSet.setBorder(BorderFactory.createRaisedBevelBorder()); // Creates a raised border around the edge of the cards to make them "pop".
+        toBeSet.setBackground(Color.yellow); // Sets the colour of the cards to yellow
+        toBeSet.setLayout(new GridBagLayout()); // Sets the 
+        return new JLabel("", SwingConstants.CENTER); // Returns a new JLabel
+    }
+    
 
 }
