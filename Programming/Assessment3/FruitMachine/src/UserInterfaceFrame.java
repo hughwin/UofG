@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import javax.swing.BorderFactory;
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -37,13 +38,14 @@ public class UserInterfaceFrame extends JFrame implements ActionListener {
         labels.setLayout(new BoxLayout(labels, BoxLayout.Y_AXIS));
 
         JLabel balanceLabel = new JLabel("Balance is " + gamelogic.getBalance());
+        labels.add(Box.createVerticalGlue());
         labels.add(balanceLabel);
 
-        JLabel cards = new JLabel("Welcome");
-        labels.add(cards);
+        JLabel cardsLabel = new JLabel("Welcome");
+        labels.add(cardsLabel);
 
-        JLabel winLose = new JLabel("");
-        labels.add(winLose);
+        JLabel winLoseLabel = new JLabel("");
+        labels.add(winLoseLabel);
 
         labelsBorder.add(labels);
 
@@ -78,7 +80,7 @@ public class UserInterfaceFrame extends JFrame implements ActionListener {
         spin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                cards.setText(gamelogic.spin());
+                cardsLabel.setText(gamelogic.spin());
                 balanceLabel.setText("Balance is " + gamelogic.getBalance());
                 card1Label.setText(gamelogic.getDrawnCardAtX(0));
                 card2Label.setText(gamelogic.getDrawnCardAtX(1));
@@ -94,7 +96,7 @@ public class UserInterfaceFrame extends JFrame implements ActionListener {
                 gamelogic.setBalance(100);
                 reset.setEnabled(false);
                 spin.setEnabled(true);
-                winLose.setText("");
+                winLoseLabel.setText("");
                 balanceLabel.setText("Balance is: " + gamelogic.getBalance());
 
             }
@@ -104,12 +106,12 @@ public class UserInterfaceFrame extends JFrame implements ActionListener {
             @Override
             public void propertyChange(PropertyChangeEvent event) {
                 if (gamelogic.hasLost()) {
-                    winLose.setText("You lose!");
+                    winLoseLabel.setText("You lose!");
                     reset.setEnabled(true);
                     spin.setEnabled(false);
                 }
                 if (gamelogic.getBalance() > 150) {
-                    winLose.setText("You win!");
+                    winLoseLabel.setText("You win!");
                     reset.setEnabled(true);
                     spin.setEnabled(false);
                 }
