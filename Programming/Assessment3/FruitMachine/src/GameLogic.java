@@ -27,7 +27,7 @@ public class GameLogic {
     public GameLogic() { // Constructor for GameLogic class
         cards = new String[]{"Ace", "King", "Queen", "Jack", "Joker"}; // Creates an 
         drawnCards = new String[3]; // creates an empty array of length 3 
-        balance = 100; // creates the instance variable balance with an initial value of 100
+        balance = 100; // creates the instance variable balance with an initial value of 100 (at the start of the game). 
     }
 
     public String[] getCards() {
@@ -50,20 +50,19 @@ public class GameLogic {
 
         Random random = new Random(); // creates a new Random object for the random selection of cards
         int jokerCount = 0; // variable to count the number of Jokers 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 3; i++) { // Iterates over the drawnCards array 
 
-            drawnCards[i] = cards[random.nextInt(cards.length)];
-            System.out.println(drawnCards[i]);
+            drawnCards[i] = cards[random.nextInt(cards.length)]; // Assign drawnCards[i] to a random card
 
-            if (drawnCards[i].equals("Joker")) {
-                balance -= 25;
-                jokerCount++;
+            if (drawnCards[i].equals("Joker")) { // If the card is a joker
+                balance -= 25; // deducts 25 from balance
+                jokerCount++; // increases the number of jokers
             }
         }
-        if (jokerCount > 1) {
-            return jokerCount + " jokers: you lose " + (25 * jokerCount) + " points";
+        if (jokerCount > 1) { // if jokerCount is over 0
+            return jokerCount + " jokers: you lose " + (25 * jokerCount) + " points"; // returns the string with the number of jokers and points. 
         }
-        if (jokerCount != 0) {
+        if (jokerCount != 0) { // if jokerCount is 1, returns the string below
             return jokerCount + " joker: you lose " + (25 * jokerCount) + " points";
         }
 
@@ -77,21 +76,15 @@ public class GameLogic {
             balance += 20; // increases balance by 20 
             return "Two of a kind - you win 20 points"; // returns a String
         }
-        return null; // If there are no jokers and no matching pairs / triples null is returned. 
+        return "Balance unchanged"; // If there are no jokers and no matching pairs, a message is returned to the player informing them the balance is unchanged. 
     }
     
-    public boolean hasWon(){
-        if (balance > 150){
-            return true;
-                }
-        return false;
+    public boolean hasWon(){ // if balance is greater than 150, hasWon() returns true. 
+        return balance >= 150; 
     }
     
-    public boolean hasLost(){
-        if (balance < 0){
-            return true;
-        }
-        return false;
+    public boolean hasLost(){ // if balance is less than 0, hasLost returns true. 
+        return balance < 0;
     }
     
 }
