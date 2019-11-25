@@ -6,8 +6,8 @@ Hugh Winchester
 import java.util.Random;
 
 public class GameLogic {
-    
-        /*
+
+    /*
     The GameLogic class contains the code determining the game's functionality. 
     The class is responsible for drawing cards when the user clicks spin, and
     determining the change in balance. 
@@ -16,14 +16,11 @@ public class GameLogic {
     would add unnecessary complexity to my code: the cards don’t need to be 
     instantiated as they don’t have their own properties. 
      */
-
     // instance variable declaration
     private String[] cards;
     private String[] drawnCards;
     private int balance;
 
-
-    
     public GameLogic() { // Constructor for GameLogic class
         cards = new String[]{"Ace", "King", "Queen", "Jack", "Joker"}; // Creates an 
         drawnCards = new String[3]; // creates an empty array of length 3 
@@ -31,7 +28,7 @@ public class GameLogic {
     }
 
     public String[] getCards() {
-        return cards; 
+        return cards;
     }
 
     public int getBalance() {
@@ -39,11 +36,11 @@ public class GameLogic {
     }
 
     public String getDrawnCardAtX(int x) { // returns a card (String) from the drawnCard array at int x
-        return drawnCards[x];  
+        return drawnCards[x];
     }
 
     public void setBalance(int newBalance) { // sets balance to an int specified by newBalance
-        balance = newBalance;             
+        balance = newBalance;
     }
 
     public String spin() {
@@ -78,13 +75,13 @@ public class GameLogic {
         }
         return "Balance unchanged"; // If there are no jokers and no matching pairs, a message is returned to the player informing them the balance is unchanged. 
     }
-    
-    public boolean hasWon(){ // if balance is greater than 150, hasWon() returns true. 
-        return balance >= 150; 
+
+    public boolean hasWon() { // if balance is greater than 150, hasWon() returns true. 
+        return balance >= 150;
     }
-    
-    public boolean hasLost(){ // if balance is less than 0, hasLost returns true. 
+
+    public boolean hasLost() { // if balance is less than 0, hasLost returns true. 
         return balance < 0;
     }
-    
+
 }

@@ -21,28 +21,23 @@ import javax.swing.SwingConstants;
 
 /* 
 Creation of the user interface 
-*/
-
+ */
 public class UserInterfaceFrame extends JFrame implements ActionListener {
 
     private GameLogic gameLogic;
 
-	public UserInterfaceFrame(String title, GameLogic gameLogic) {
+    public UserInterfaceFrame(String title, GameLogic gameLogic) {
         super(title); // sets the title of the frame to title
         setSize(600, 400); // sets the size of the frame
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // sets the default behaviour of the close operation to EXIT_ON_CLOSE
         setVisible(true); // sets the frame to visibble 
         setLayout(new GridLayout(2, 0)); // sets the layout of the frame to GridLayout with 2 rows. 
         this.gameLogic = gameLogic;
-      
-
-        
 
         JPanel labelsBorder = new JPanel(); // creats a new reference to a JPanel object
         labelsBorder.setBorder(BorderFactory.createLoweredBevelBorder()); // Creates a bevel border to seperate the data labesl from the rest of the UI. 
         JPanel labels = new JPanel(); // creates a new reference to a JPanel object
         labels.setLayout(new BoxLayout(labels, BoxLayout.Y_AXIS)); // sets the layout to BoxLayout, items are alligned down the Y axis. 
-
 
         JLabel balanceLabel = new JLabel("Balance is " + gameLogic.getBalance()); // gets the balance from gameLogic getBalance() method and sets the JLabel accordingly. 
         formatDataLabels(balanceLabel); // formats the styling of the label with help from the formatDataLabels helper method. 
@@ -51,16 +46,16 @@ public class UserInterfaceFrame extends JFrame implements ActionListener {
         JLabel cardsLabel = new JLabel("Welcome"); // Creates the cards label message. First message is set to welcome
         formatDataLabels(cardsLabel);  // formats the styling of the label with help from the formatDataLabels helper method.
         labels.add(cardsLabel); // adds the cardsLabel to the labels JPanel
- 
+
         JLabel winLoseLabel = new JLabel(""); // Win lose label is initallly set to "" 
         formatDataLabels(winLoseLabel); // formats the styling of the label with help from the formatDataLabels helper method.
         labels.add(winLoseLabel); // adds the winLoseLabel to the labels JPanel
-    
+
         labelsBorder.add(labels); // adds the labels JPanel to the frame
 
         JPanel lowerFrame = new JPanel(); // creates a new JPanel object reference for the lower half of the frame
         lowerFrame.setLayout(new GridLayout(0, 2)); // sets the layout to GridLayout with 2 columns
- 
+
         JPanel lowerRightFrame = new JPanel(); // creats a JPanel for the lower righthandside of the Frame. 
         lowerRightFrame.setLayout(new GridLayout(2, 0)); // sets GridLayout with two rows
         lowerRightFrame.setBorder(BorderFactory.createEmptyBorder(60, 60, 60, 60)); // creates an empty border
@@ -68,7 +63,7 @@ public class UserInterfaceFrame extends JFrame implements ActionListener {
         JPanel lowerLeftFrame = new JPanel(); // creates a JPanel 
         lowerLeftFrame.setLayout(new GridLayout(0, 3, 30, 0)); // creates a new GridLayout with 3 columns and 30 pixels of horizontal space between each column. 
         lowerLeftFrame.setBorder(BorderFactory.createEmptyBorder(50, 50, 50, 50)); // sets an empty border around the frame. 
-        
+
         JPanel card1 = new JPanel(); // creates a new Jpanel for card1
         JLabel card1Label = setCardLayout(card1); // uses the helper method setCardLayout to format the layout of the card
         card1.add(card1Label); // adds the card1Label to card1 
@@ -135,7 +130,7 @@ public class UserInterfaceFrame extends JFrame implements ActionListener {
 
         add(labelsBorder); // adds labelsBorder to frame
         add(lowerFrame); // adds lowerFrame to frame
-        
+
     }
 
     @Override
@@ -143,20 +138,17 @@ public class UserInterfaceFrame extends JFrame implements ActionListener {
         // TODO Auto-generated method stub
 
     }
-    
-    private JLabel setCardLayout(JPanel toBeSet){ // Helper method for the creation of cards as this is done repetitively
+
+    private JLabel setCardLayout(JPanel toBeSet) { // Helper method for the creation of cards as this is done repetitively
         toBeSet.setBorder(BorderFactory.createRaisedBevelBorder()); // Creates a raised border around the edge of the cards to make them "pop".
         toBeSet.setBackground(Color.yellow); // Sets the colour of the cards to yellow
         toBeSet.setLayout(new GridBagLayout()); // Sets the Layout to GridBagLayout
         return new JLabel("", SwingConstants.CENTER); // Returns a new JLabel
     }
-    
-    private void formatDataLabels(JLabel toBeSet){ // Helper method for the formatting of data labels as this is done repetitively
+
+    private void formatDataLabels(JLabel toBeSet) { // Helper method for the formatting of data labels as this is done repetitively
         toBeSet.setAlignmentX(Component.CENTER_ALIGNMENT); // Centres the component along the Y-axis
-        toBeSet.setBorder(BorderFactory.createEmptyBorder(15,15,15,15)); // Creates an empty border. 
+        toBeSet.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15)); // Creates an empty border. 
     }
-    
-   
-    
 
 }
