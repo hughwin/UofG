@@ -15,7 +15,12 @@ public class ButtonFunctionality {
                 gameLogic.spin();
                 gameLogic.getBalance();
                 gameLogic.setCardsLabels();
-
+                gameLogic.checkWinLoss();
+                }
+        });
+        userInterfaceFrame.getResetButton().addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                gameLogic.reset();
             }
         });
     }

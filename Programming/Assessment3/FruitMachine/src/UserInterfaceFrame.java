@@ -93,6 +93,7 @@ public class UserInterfaceFrame extends JFrame implements ActionListener {
 
         lowerRightFrame.add(spin); // adds the spin button to lowerRightFrame
         lowerRightFrame.add(reset); // adds the reset button to lowerRightFrame
+        reset.setEnabled(false);
 
         lowerFrame.add(lowerLeftFrame); // adds lowerLeftFrame to lowerFrame Jpanel
         lowerFrame.add(lowerRightFrame); // adds lowerRightFrame to lowerFrame Jpanel
@@ -128,12 +129,20 @@ public class UserInterfaceFrame extends JFrame implements ActionListener {
         return spin;
     }
 
-    public JButton getRestButton(){
+    public JButton getResetButton(){
         return reset;
     }
 
     public JLabel getBalanceLabel(){
         return balanceLabel;
+    }
+
+    public JLabel getWinLoseLabel(){
+        return winLoseLabel;
+    }
+
+    public JLabel getCardsLabel(){
+        return cardsLabel;
     }
 
     public JLabel getCard1Label(){
