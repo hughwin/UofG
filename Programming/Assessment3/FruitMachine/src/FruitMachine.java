@@ -5,8 +5,9 @@ Hugh Winchester
 public class FruitMachine {
 
     public static void main(String[] args) {
-        GameLogic gameLogic = new GameLogic();
-        new UserInterfaceFrame("Fruitmachine", gameLogic);
+        UserInterfaceFrame userInterfaceFrame = new UserInterfaceFrame("Fruitmachine"); // view
+        GameLogic gameLogic = new GameLogic(userInterfaceFrame); // model
+        ButtonFunctionality buttonFunctionality = new ButtonFunctionality(userInterfaceFrame, gameLogic); // controller
     }
 
 }
