@@ -3,26 +3,13 @@ Hugh Winchester
 2494047W
  */
 
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.GridBagLayout;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.SwingConstants;
+import javax.swing.*;
+import java.awt.*;
 
 /* 
 Creation of the user interface 
  */
-public class UserInterfaceFrame extends JFrame implements ActionListener {
+public class UserInterfaceFrame extends JFrame {
 
 
     private JButton spin = new JButton("Spin"); // creates a new JButton object referenced to spin
@@ -37,8 +24,6 @@ public class UserInterfaceFrame extends JFrame implements ActionListener {
     private JLabel card3Label = new JLabel("", SwingConstants.CENTER); // Returns a new JLabel
 
 
-
-
     public UserInterfaceFrame(String title) {
         super(title); // sets the title of the frame to title
         setSize(650, 450); // sets the size of the frame
@@ -51,7 +36,7 @@ public class UserInterfaceFrame extends JFrame implements ActionListener {
         labels.setLayout(new BoxLayout(labels, BoxLayout.Y_AXIS)); // sets the layout to BoxLayout, items are alligned down the Y axis. 
 
         formatDataLabels(balanceLabel); // formats the styling of the label with help from the formatDataLabels helper method.
-        labels.add(balanceLabel); // adds balanceLabel to the labels Jpanel. 
+        labels.add(balanceLabel); // adds balanceLabel to the labels JPanel.
 
         formatDataLabels(cardsLabel);  // formats the styling of the label with help from the formatDataLabels helper method.
         labels.add(cardsLabel); // adds the cardsLabel to the labels JPanel
@@ -72,7 +57,7 @@ public class UserInterfaceFrame extends JFrame implements ActionListener {
         lowerLeftFrame.setLayout(new GridLayout(0, 3, 30, 0)); // creates a new GridLayout with 3 columns and 30 pixels of horizontal space between each column. 
         lowerLeftFrame.setBorder(BorderFactory.createEmptyBorder(50, 50, 50, 50)); // sets an empty border around the frame. 
 
-        JPanel card1 = new JPanel(); // creates a new Jpanel for card1
+        JPanel card1 = new JPanel(); // creates a new JPanel for card1
         setCardLayout(card1); // uses the helper method setCardLayout to format the layout of the card
         card1.add(card1Label); // adds the card1Label to card1
 
@@ -106,12 +91,6 @@ public class UserInterfaceFrame extends JFrame implements ActionListener {
 
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
-
-    }
-
     private void setCardLayout(JPanel toBeSet) { // Helper method for the creation of cards as this is done repetitively
         toBeSet.setBorder(BorderFactory.createRaisedBevelBorder()); // Creates a raised border around the edge of the cards to make them "pop".
         toBeSet.setBackground(Color.yellow); // Sets the colour of the cards to yellow
@@ -124,36 +103,40 @@ public class UserInterfaceFrame extends JFrame implements ActionListener {
         toBeSet.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15)); // Creates an empty border. 
     }
 
+    /*
+    Getters for the various buttons and JLabels
+     */
 
-    public JButton getSpinButton(){
+
+    public JButton getSpinButton() {
         return spin;
     }
 
-    public JButton getResetButton(){
+    public JButton getResetButton() {
         return reset;
     }
 
-    public JLabel getBalanceLabel(){
+    public JLabel getBalanceLabel() {
         return balanceLabel;
     }
 
-    public JLabel getWinLoseLabel(){
+    public JLabel getWinLoseLabel() {
         return winLoseLabel;
     }
 
-    public JLabel getCardsLabel(){
+    public JLabel getCardsLabel() {
         return cardsLabel;
     }
 
-    public JLabel getCard1Label(){
+    public JLabel getCard1Label() {
         return card1Label;
     }
 
-    public JLabel getCard2Label(){
+    public JLabel getCard2Label() {
         return card2Label;
     }
 
-    public JLabel getCard3Label(){
+    public JLabel getCard3Label() {
         return card3Label;
     }
 

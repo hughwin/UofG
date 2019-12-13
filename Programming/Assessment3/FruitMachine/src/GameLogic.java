@@ -61,52 +61,54 @@ public class GameLogic {
                 balance -= 25; // deducts 25 from balance
                 jokerCount++; // increases the number of jokers
             }
-            System.out.println(jokerCount);
+
         }
         if (jokerCount > 1) { // if jokerCount is over 0
-            userInterfaceFrame.getCardsLabel().setText(jokerCount + " jokers: you lose " + (25 * jokerCount) + " points"); // returns the string with the number of jokers and points.
+            userInterfaceFrame.getCardsLabel().setText(jokerCount + " jokers: you lose " + (25 * jokerCount) + " points"); // Sets the number of jokers and points.
             return;
         }
         if (jokerCount != 0) { // if jokerCount is 1, returns the string below
-             userInterfaceFrame.getCardsLabel().setText(jokerCount + " joker: you lose " + (25 * jokerCount) + " points");
+            userInterfaceFrame.getCardsLabel().setText(jokerCount + " joker: you lose " + (25 * jokerCount) + " points");
             return;
         }
 
         if (drawnCards[0].equals(drawnCards[1]) && drawnCards[1].equals(drawnCards[2])) { // detects whether the 3 Strings in the array are the same
             balance += 50; // increases balance by 50
-            userInterfaceFrame.getCardsLabel().setText("Three of a kind - you win 50 points"); // returns a String
+            userInterfaceFrame.getCardsLabel().setText("Three of a kind - you win 50 points"); // Sets the getCardsLabel
             return;
 
         } else if (drawnCards[0].equals(drawnCards[1]) || drawnCards[0].equals(drawnCards[2])
                 || drawnCards[1].equals(drawnCards[2])) { // detects whether there are two of the same cards in the drawnCards array
 
             balance += 20; // increases balance by 20
-            userInterfaceFrame.getCardsLabel().setText("Two of a kind - you win 20 points"); // returns a String
+            userInterfaceFrame.getCardsLabel().setText("Two of a kind - you win 20 points"); // Sets the getCardsLabel
             return;
-        }
-        else {userInterfaceFrame.getCardsLabel().setText("Balance unchanged"); }// If there are no jokers and no matching pairs, a message is returned to the player informing them the balance is unchanged.
+        } else {
+            userInterfaceFrame.getCardsLabel().setText("Balance unchanged");
+        }// If there are no jokers and no matching pairs, a message is returned to the player informing them the balance is unchanged.
     }
 
 
-    public void checkWinLoss() {
-        if (balance < 0){
-            userInterfaceFrame.getSpinButton().setEnabled(false);
-            userInterfaceFrame.getResetButton().setEnabled(true);
-            userInterfaceFrame.getWinLoseLabel().setText("You lose!");
+    public void checkWinLoss() { // Checks whether the player has won or lost
+        if (balance < 0) {       // If the balance is less than 0
+            userInterfaceFrame.getSpinButton().setEnabled(false); // Disables the spin button
+            userInterfaceFrame.getResetButton().setEnabled(true); // Enables the reset button
+            userInterfaceFrame.getWinLoseLabel().setText("You lose!"); // Sets the WinLose JLabel to "You lose!"
         }
         if (balance >= 150) {
-            userInterfaceFrame.getSpinButton().setEnabled(false);
-            userInterfaceFrame.getResetButton().setEnabled(true);
-            userInterfaceFrame.getWinLoseLabel().setText("You win!");
+            userInterfaceFrame.getSpinButton().setEnabled(false); // Disables the spin button
+            userInterfaceFrame.getResetButton().setEnabled(true); // Enables the reset button
+            userInterfaceFrame.getWinLoseLabel().setText("You win!"); // Sets the WinLose JLabel to "You win!"
 
         }
     }
 
-    public void reset(){
-        setBalance(100);
-        userInterfaceFrame.getResetButton().setEnabled(false);
-        userInterfaceFrame.getSpinButton().setEnabled(true);
-        userInterfaceFrame.getCardsLabel().setText("Welcome!");
+    public void reset() { // Resets the game if a player wins / loses
+        setBalance(100); // Sets the balance back to the starting balance of 100
+        userInterfaceFrame.getResetButton().setEnabled(false); // Disables the reset button
+        userInterfaceFrame.getSpinButton().setEnabled(true);   // Sets the spin button to enabled
+        userInterfaceFrame.getCardsLabel().setText("Welcome!"); // Sets the cards label to "Welcome!"
+        userInterfaceFrame.getWinLoseLabel().setText("");       // Functionally removes the win loss label
     }
 
 }
