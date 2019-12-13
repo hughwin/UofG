@@ -95,7 +95,6 @@ public class UserInterfaceFrame extends JFrame {
         toBeSet.setBorder(BorderFactory.createRaisedBevelBorder()); // Creates a raised border around the edge of the cards to make them "pop".
         toBeSet.setBackground(Color.yellow); // Sets the colour of the cards to yellow
         toBeSet.setLayout(new GridBagLayout()); // Sets the Layout to GridBagLayout
-        new JLabel("", SwingConstants.CENTER); // Returns a new JLabel
     }
 
     private void formatDataLabels(JLabel toBeSet) { // Helper method for the formatting of data labels as this is done repetitively
