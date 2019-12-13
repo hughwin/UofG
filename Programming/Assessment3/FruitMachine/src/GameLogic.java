@@ -34,7 +34,7 @@ public class GameLogic {
     }
 
     public void getBalance() {
-        userInterfaceFrame.getBalanceLabel().setText("Balance: " + balance);
+        userInterfaceFrame.getBalanceLabel().setText("Balance is " + balance);
     }
 
     public void setCardsLabels() { // returns a card (String) from the drawnCard array at int x

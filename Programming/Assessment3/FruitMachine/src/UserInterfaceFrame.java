@@ -15,7 +15,7 @@ public class UserInterfaceFrame extends JFrame {
     private JButton spin = new JButton("Spin"); // creates a new JButton object referenced to spin
     private JButton reset = new JButton("New game");
 
-    private JLabel balanceLabel = new JLabel("Balance is ");
+    private JLabel balanceLabel = new JLabel("Balance is 100");
     private JLabel cardsLabel = new JLabel("Welcome");
     private JLabel winLoseLabel = new JLabel("");
 
