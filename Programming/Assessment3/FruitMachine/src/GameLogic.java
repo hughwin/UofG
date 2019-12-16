@@ -12,10 +12,12 @@ public class GameLogic {
         The class is responsible for drawing cards when the user clicks spin, and
         determining the change in balance.
 
-        I considered creating a separate class for cards, but this I believe
-        would add unnecessary complexity to my code: the cards don’t need to be
-        instantiated as they don’t have their own properties.
+        I considered creating a separate class for cards (for the purpose of
+        extensibility of the program), but this I believe would add unnecessary
+        complexity to my code as the cards don’t need to be instantiated or have their own behaviour.
+        Should the program be extended in the future, it is fairly trivial to put the cards in their own class.
          */
+
     // instance variable declaration
     private UserInterfaceFrame userInterfaceFrame;
     private String[] cards;
@@ -24,20 +26,18 @@ public class GameLogic {
 
     public GameLogic(UserInterfaceFrame userInterfaceFrame) { // Constructor for GameLogic class
         this.userInterfaceFrame = userInterfaceFrame;
-        cards = new String[]{"Ace", "King", "Queen", "Jack", "Joker"}; // Creates an 
+        cards = new String[]{"Ace", "King", "Queen", "Jack", "Joker"}; // Creates an array filled with the cards as Strings
         drawnCards = new String[3]; // creates an empty array of length 3 
         balance = 100; // creates the instance variable balance with an initial value of 100 (at the start of the game). 
     }
 
-    public String[] getCards() {
-        return cards;
+
+
+    public void setBalanceLabel() {  // sets the value of balanceLabel in the view to the current value of Balance
+        userInterfaceFrame.getBalanceLabel().setText("Balance is " + balance); // uses getBalanceLabel() from the view to get the label and to set it to the value of balance.
     }
 
-    public void getBalance() {
-        userInterfaceFrame.getBalanceLabel().setText("Balance is " + balance);
-    }
-
-    public void setCardsLabels() { // returns a card (String) from the drawnCard array at int x
+    public void setCardsLabels() { // sets the labels of the cards according to the drawnCards array
         userInterfaceFrame.getCard1Label().setText(drawnCards[0]);
         userInterfaceFrame.getCard2Label().setText(drawnCards[1]);
         userInterfaceFrame.getCard3Label().setText(drawnCards[2]);
@@ -45,7 +45,7 @@ public class GameLogic {
 
     public void setBalance(int newBalance) { // sets balance to an int specified by newBalance
         balance = newBalance;
-        getBalance();
+        setBalanceLabel();
     }
 
     public void spin() {
@@ -95,7 +95,7 @@ public class GameLogic {
             userInterfaceFrame.getResetButton().setEnabled(true); // Enables the reset button
             userInterfaceFrame.getWinLoseLabel().setText("You lose!"); // Sets the WinLose JLabel to "You lose!"
         }
-        if (balance >= 150) {
+        if (balance >= 150) { // If balance is 150 or greater
             userInterfaceFrame.getSpinButton().setEnabled(false); // Disables the spin button
             userInterfaceFrame.getResetButton().setEnabled(true); // Enables the reset button
             userInterfaceFrame.getWinLoseLabel().setText("You win!"); // Sets the WinLose JLabel to "You win!"
@@ -108,7 +108,7 @@ public class GameLogic {
         userInterfaceFrame.getResetButton().setEnabled(false); // Disables the reset button
         userInterfaceFrame.getSpinButton().setEnabled(true);   // Sets the spin button to enabled
         userInterfaceFrame.getCardsLabel().setText("Welcome!"); // Sets the cards label to "Welcome!"
-        userInterfaceFrame.getWinLoseLabel().setText("");       // Functionally removes the win loss label
+        userInterfaceFrame.getWinLoseLabel().setText("");       // Functionally removes the win loss label on reset
     }
 
 }

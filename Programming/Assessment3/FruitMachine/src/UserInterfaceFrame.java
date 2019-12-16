@@ -7,7 +7,9 @@ import javax.swing.*;
 import java.awt.*;
 
 /* 
-Creation of the user interface 
+Creation of the user interface.
+
+I considered making the cards separate classes, but as I wasn’t adding more functionality to the card, I thought that this would be better handled by helper methods which just did the repetitive formatting.
  */
 public class UserInterfaceFrame extends JFrame {
 
@@ -49,7 +51,7 @@ public class UserInterfaceFrame extends JFrame {
         JPanel lowerFrame = new JPanel(); // creates a new JPanel object reference for the lower half of the frame
         lowerFrame.setLayout(new GridLayout(0, 2)); // sets the layout to GridLayout with 2 columns
 
-        JPanel lowerRightFrame = new JPanel(); // creats a JPanel for the lower righthandside of the Frame. 
+        JPanel lowerRightFrame = new JPanel(); // creats a JPanel for the lower right-handside of the Frame.
         lowerRightFrame.setLayout(new GridLayout(2, 0)); // sets GridLayout with two rows
         lowerRightFrame.setBorder(BorderFactory.createEmptyBorder(60, 60, 60, 60)); // creates an empty border
 
@@ -69,7 +71,7 @@ public class UserInterfaceFrame extends JFrame {
 
         JPanel card3 = new JPanel(); // creates a new JPanel for card 3
         setCardLayout(card3); // uses the helper method setCardLayout to format the layout of the card
-        card3.add(card3Label);
+        card3.add(card3Label); // adds the card3Label to card3
 
         lowerLeftFrame.add(card1);
         lowerLeftFrame.add(card2);
@@ -78,7 +80,7 @@ public class UserInterfaceFrame extends JFrame {
 
         lowerRightFrame.add(spin); // adds the spin button to lowerRightFrame
         lowerRightFrame.add(reset); // adds the reset button to lowerRightFrame
-        reset.setEnabled(false);
+        reset.setEnabled(false); // sets the reset button to disabled by default.
 
         lowerFrame.add(lowerLeftFrame); // adds lowerLeftFrame to lowerFrame Jpanel
         lowerFrame.add(lowerRightFrame); // adds lowerRightFrame to lowerFrame Jpanel
@@ -86,7 +88,7 @@ public class UserInterfaceFrame extends JFrame {
         add(labelsBorder); // adds labelsBorder to frame
         add(lowerFrame); // adds lowerFrame to frame
 
-        setVisible(true); // sets the frame to visibble
+        setVisible(true); // sets the frame to visible
 
 
     }

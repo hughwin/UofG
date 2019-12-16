@@ -9,7 +9,7 @@ public class FruitMachine {
         /*
 
         I have tried to follow MVC design patterns as closely as possible. Below are my three classes comprising the MVC.
-
+        Each is initialised in turn.
          */
 
         UserInterfaceFrame userInterfaceFrame = new UserInterfaceFrame("Fruitmachine"); // view
