@@ -11,7 +11,7 @@ public class ButtonFunctionality {
     /*
     ButtonFunctionality class controls what the buttons do when they are clicked. The button functionality class does this
     by adding addActionListener to buttons in the view (UserInterFaceFrame). When the buttons are clicked the model is updated, which
-    in turn, updates the view.  
+    in turn, updates the view.
      */
 
 

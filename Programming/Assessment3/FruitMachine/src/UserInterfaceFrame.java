@@ -15,15 +15,15 @@ public class UserInterfaceFrame extends JFrame {
 
 
     private JButton spin = new JButton("Spin"); // creates a new JButton object referenced to spin
-    private JButton reset = new JButton("New game");
+    private JButton reset = new JButton("New game"); // creates a new JButton object referenced to reset
 
-    private JLabel balanceLabel = new JLabel("Balance is 100");
-    private JLabel cardsLabel = new JLabel("Welcome");
+    private JLabel balanceLabel = new JLabel("Balance is 100"); // Creates a JLabel to show the balance, named balanceLabel accordingly. Default balance is shown
+    private JLabel cardsLabel = new JLabel("Welcome"); // Creates a JLabel object referenced to cardsLabel. By default the message is set to "Welcome".
     private JLabel winLoseLabel = new JLabel("");
 
-    private JLabel card1Label = new JLabel("", SwingConstants.CENTER); // Returns a new JLabel
-    private JLabel card2Label = new JLabel("", SwingConstants.CENTER); // Returns a new JLabel
-    private JLabel card3Label = new JLabel("", SwingConstants.CENTER); // Returns a new JLabel
+    private JLabel card1Label = new JLabel("", SwingConstants.CENTER); // Creates a a new JLabel which is centred
+    private JLabel card2Label = new JLabel("", SwingConstants.CENTER); // Creates a a new JLabel which is centred
+    private JLabel card3Label = new JLabel("", SwingConstants.CENTER); // Creates a new JLabel which is centred
 
 
     public UserInterfaceFrame(String title) {
@@ -73,6 +73,7 @@ public class UserInterfaceFrame extends JFrame {
         setCardLayout(card3); // uses the helper method setCardLayout to format the layout of the card
         card3.add(card3Label); // adds the card3Label to card3
 
+        // Adds the cards to the lowerLeftFrame
         lowerLeftFrame.add(card1);
         lowerLeftFrame.add(card2);
         lowerLeftFrame.add(card3);
