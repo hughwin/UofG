@@ -30,6 +30,15 @@ public class Recursion {
 
     }
 
+    public static int collatzConjecture(int num, int count){
+        if(num == 1) return count;
+
+        if(num % 2 == 0) return collatzConjecture((num/2), count+1);
+        else{
+            return collatzConjecture((num * 3) + 1,  count + 1);
+        }
+    }
+
     public static void main(String[] args) {
         printAsterisks(10);
         System.out.println();
@@ -38,6 +47,8 @@ public class Recursion {
         System.out.println(simplePowerFunction(5));
         System.out.println();
         System.out.println(sumOfSquares(10));
+
+        System.out.println(collatzConjecture(10, 0));
     }
 
 }
